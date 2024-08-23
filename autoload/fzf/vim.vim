@@ -1564,7 +1564,7 @@ function! s:commits(range, buffer_local, args)
     if !len(a:range)
       let orderfile = tempname()
       call writefile([current[len(s:git_root)+1:]], orderfile)
-      let previewcmd = 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs ' . prefix . 'show -O'.fzf#shellescape(orderfile).' --format=format: --color=always '
+      let previewcmd = 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs ' . prefix . 'show -O'.fzf#shellescape(orderfile).' --format=medium --color=always '
     endif
     let suffix = executable('delta') ? '| delta --width $FZF_PREVIEW_COLUMNS' : ''
     call extend(options.options, ['--preview', previewcmd . suffix])
